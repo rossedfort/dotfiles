@@ -1,0 +1,68 @@
+#!/usr/env/bin bash
+
+__prompt() {
+    readonly GIT_BRANCH_CHANGED_SYMBOL='△'
+    readonly GIT_NEED_PUSH_SYMBOL='↑'
+    readonly GIT_NEED_PULL_SYMBOL='↓'
+    readonly FG_BASE03="\[$(tput setaf 8)\]"
+    readonly FG_YELLOW="\[$(tput setaf 3)\]"
+    readonly FG_VIOLET="\[$(tput setaf 13)\]"
+    readonly FG_BLUE="\[$(tput setaf 4)\]"
+    readonly FG_GREEN="\[$(tput setaf 2)\]"
+    readonly BOLD="\[$(tput bold)\]"
+    readonly RESET="\[$(tput sgr0)\]"
+    readonly FG_RED="\[$(tput setaf 1)\]"
+
+    __git_info() {
+        [ -x "$(which git)" ] || return    # git not found
+
+        local git_eng="env LANG=C git"   # force git output in English to make our work easier
+        # get current branch name or short SHA1 hash for detached head
+        local branch="$($git_eng symbolic-ref --short HEAD 2>/dev/null || $git_eng describe --tags --always 2>/dev/null)"
+        [ -n "$branch" ] || return  # git branch not found
+
+        local marks
+
+        # branch is modified?
+        [ -n "$($git_eng status --porcelain)" ] && marks+=" $FG_RED$GIT_BRANCH_CHANGED_SYMBOL$RESET "
+
+        # how many commits local branch is ahead/behind of remote?
+        local stat="$($git_eng status --porcelain --branch | grep '^##' | grep -o '\[.\+\]$')"
+        local aheadN="$(echo $stat | grep -o 'ahead [[:digit:]]\+' | grep -o '[[:digit:]]\+')"
+        local behindN="$(echo $stat | grep -o 'behind [[:digit:]]\+' | grep -o '[[:digit:]]\+')"
+        [ -n "$aheadN" ] && marks+=" $FG_RED$GIT_NEED_PUSH_SYMBOL$aheadN$RESET"
+        [ -n "$behindN" ] && marks+=" $FG_RED$GIT_NEED_PULL_SYMBOL$behindN$RESET"
+
+        # print the git branch segment without a trailing newline
+        printf " on $BOLD$FG_GREEN($branch)$RESET$marks"
+    }
+
+    ps1() {
+        local EXIT="$?"
+        PS1="▸"
+        PS1+=" in "
+      
+        # path to current directory
+        PS1+="$BOLD$FG_BLUE\w$RESET"
+            
+        # git stuff
+        PS1+="$(__git_info)"
+        
+        # time
+        PS1+=" at "
+        PS1+="$BOLD$FG_YELLOW\@$RESET"
+        
+        if [ $EXIT != 0 ]; then
+            PS1+="$FG_RED ✘  $RESET"
+        else
+            PS1+="$FG_GREEN ✔︎  $RESET"
+        fi
+  
+        PS1+="\n$ "
+    }
+
+    PROMPT_COMMAND=ps1
+}
+
+__prompt
+unset __prompt
