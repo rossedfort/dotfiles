@@ -13,12 +13,10 @@ alias wttr='curl wttr.in/denver'
 alias pw='cat ~/Dropbox/.pw | tr -d "\r\n" | pbcopy'
 alias faf="find . -name "$1" -print -type f"
 alias fif="grep -rin --colour=auto "$1" "$2""
-# Easier navigation: .., ..., ...., ....., ~ and -
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
-# Shortcuts
 alias d="cd ~/Dropbox"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
