@@ -1,25 +1,30 @@
 #!/usr/bin/env bash
 
 # Aliases
-## general
-alias ..='cd ..'
+# general
 alias a='atom'
 alias c='code'
-alias ngstart="sudo service nginx start"
-alias ngstop="sudo service nginx stop"
-alias obp="vim ~/Dropbox/.bash_profile"
-alias hserv="http-server"
+alias obp="vim ~/Dropbox/dotfiles/.bash_profile"
 alias wd="cd ~/wazee"
 alias dm="cd ~/deleteme"
 alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\'' -e '\''s/^/   /'\'' -e '\''s/-/|/'\'' | less'
 alias f='open -a Finder ./'
-alias myip='curl ip.appspot.com'
 alias wttr='curl wttr.in/denver'
 alias pw='cat ~/Dropbox/.pw | tr -d "\r\n" | pbcopy'
 alias faf="find . -name "$1" -print -type f"
 alias fif="grep -rin --colour=auto "$1" "$2""
+# Easier navigation: .., ..., ...., ....., ~ and -
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+# Shortcuts
+alias d="cd ~/Dropbox"
+alias dl="cd ~/Downloads"
+alias dt="cd ~/Desktop"
+alias p="cd ~/code"
 
-## git
+# git
 alias gi="git init"
 alias gb="git br"
 alias gc="git commit -m"
@@ -34,54 +39,6 @@ alias gcom="git checkout master"
 alias oops="git reset --hard"
 alias gs="git status"
 
-## rails/rake
-alias yolo="bundle exec rake db:drop db:create db:migrate db:seed"
-alias be="bundle exec"
-alias procreate="RAILS_ENV=production rake db:create"
-alias prowomp="RAILS_ENV=production rake db:migrate db:seed"
-alias proserve="RAILS_ENV=production rails s"
-alias proconsole="RAILS_ENV=production rails c"
-alias proclobber="RAILS_ENV=production rake assets:clobber"
-alias proprecomp="RAILS_ENV=production rake assets:precompile"
-alias clobber="rake assets:clobber"
-alias precomp="rake assets:precompile"
-alias womp="rake db:migrate db:seed"
-alias bam="rake db:reset"
-alias boom="rake db:drop"
-
-## heroku
-alias gph="git push heroku master"
-alias heropm="git push heroku master"
-alias heronew="heroku create"
-alias heroconnect="herkou git:remote -a"
-alias heropg="heroku pg:reset DATABASE_URL --confirm"
-alias hmigrate="heroku run rake db:migrate db:seed"
-alias hset="heroku config:set"
-alias hlogs="heroku logs -t"
-alias fig="figaro heroku:set -e production"
-
-## brew
-alias brewu="brew update"
-alias brewup="brewup"
-alias brewcu="brew cleanup"
-alias brewdoc="brew doctor"
-
-#!/usr/bin/env bash
-
-# Easier navigation: .., ..., ...., ....., ~ and -
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-alias ~="cd ~" # `cd` is probably faster to type though
-alias -- -="cd -"
-
-# Shortcuts
-alias d="cd ~/Dropbox"
-alias dl="cd ~/Downloads"
-alias dt="cd ~/Desktop"
-alias p="cd ~/code"
-
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
   colorflag="--color"
@@ -93,16 +50,6 @@ fi
 
 # List all files colorized in long format
 alias l="ls -lFGgohqv ${colorflag}"
-
-# -l  long format
-# -F  / after dirs, * after exe, @ after symlink
-# -G  colorize
-# -g suppress owner
-# -o suppress group
-# -h humanize sizes
-# -q print nongraphic chars as question marks
-# -v order
-# alias l ="ls -lFGgohqv "$@""
 
 # List all files colorized in long format, including dot files
 alias la="ls -laF ${colorflag}"
@@ -154,11 +101,6 @@ command -v md5sum > /dev/null || alias md5sum="md5"
 
 # macOS has no `sha1sum`, so use `shasum` as a fallback
 command -v sha1sum > /dev/null || alias sha1sum="shasum"
-
-# JavaScriptCore REPL
-jscbin="/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc";
-[ -e "${jscbin}" ] && alias jsc="${jscbin}";
-unset jscbin;
 
 # Trim new lines and copy to clipboard
 alias c="tr -d '\n' | pbcopy"
