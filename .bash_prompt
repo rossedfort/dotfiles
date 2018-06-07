@@ -17,7 +17,7 @@ git_info() {
   local marks='';
 
   # branch is modified?
-  [ -n "$($git_eng status --porcelain)" ] && marks+="△"
+  [ -n "$($git_eng status --porcelain)" ] && marks+="△ "
 
   # how many commits local branch is ahead/behind of remote?
   local stat="$($git_eng status --porcelain --branch | grep '^##' | grep -o '\[.\+\]$')"
