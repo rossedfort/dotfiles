@@ -1,0 +1,165 @@
+[push]
+    default = simple
+[user]
+    name = Ross Edfort
+    email = ross.edfort@wazeedigital.com
+[core]
+    excludesfile = /Users/redfort/.gitignore_global
+[color]
+    ui = auto
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+[color "status"]
+    added = green
+    changed = yellow
+    untracked = cyan
+
+[alias]
+  # Shorthand (shorter versions of common operations, sometimes with better defaults)
+    up       = "!git remote update -p; git merge --ff-only @{u}"
+    d        = diff --patience --ignore-space-change
+    co       = checkout
+    st       = status
+    praise   = blame
+
+  # Commits
+    shas     = log --pretty=format:\"%H\"
+    hist     = log --pretty=format:\"%Cgreen%h%Creset %Cblue%ad%Creset %s%C(yellow)%d%Creset %Cblue[%an]%Creset\" --graph --date=short
+
+  # Branches
+    # --all gives local and remote, --verbose 1x shows 1st line of log, 2x: show upstream branch
+    br       = branch --all --verbose --verbose
+
+    # list current branch
+    brcrnt   = rev-parse --abbrev-ref HEAD
+
+    # copy branch
+    brpb     = !git brcrnt | xargs echo -n | pbcopy
+
+    # Author info (who all worked on this thing?)
+      # something like number of commits by committer (doesn't quite match up, though)
+    count    = shortlog -sn
+
+    # list people who have committed
+    authors  = ! git log --format=\"%ae %an\" | sort -u | column -t
+
+    # Stash (slightly better stash commands... sadly, --keep-index doesn't work well enough to be useful, works for the stash, but not the pop)
+      # stash untracked files, too
+    stpush   = stash -m --include-untracked
+
+    # when popping, remember what was in the staging area
+    stpop    = stash pop --index
+
+    # Pull requests (stolen from https://github.com/pd/dotfiles/blob/e2d2418f96c5d13b4b06e3f2dff78dfb51eeb49c/gitconfig#L47-48)
+      # call with the pull request #, it will check out the pr locally
+    pr       = "!f() { remote=${2:-$(git remote|head -1)}; git fetch -fu $remote refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
+
+    # remove local branches that were created from `git pr`
+    pr-clean = "!git for-each-ref refs/heads/pr/* --format='%(refname)' | while read ref ; do branch=${ref#refs/heads/} ; git branch -D $branch ; done"
+
+    # Git objects (for low-level exploration of git objects)
+    type     = cat-file -t
+    dump     = cat-file -p
+
+    # View abbreviated SHA, description, and history graph of the latest 20 commits
+    l = log --pretty=oneline -n 20 --graph --abbrev-commit
+
+    lo = log --pretty=oneline --abbrev-commit
+
+    # View the current working tree status using the short format
+    s = status -s
+
+    # Show the diff between the latest commit and the current state
+    d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+
+    # `git di $number` shows the diff between the state `$number` revisions ago and the current state
+    di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
+
+    # Pull in remote changes for the current repository and all its submodules
+    p = !"git pull; git submodule foreach git pull origin master"
+
+    # Clone a repository including all submodules
+    c = clone --recursive
+
+    # Commit all changes
+    ca = !git add -A && git commit -av
+
+    # Switch to a branch, creating it if necessary
+    go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+
+    # Show verbose output about tags, branches or remotes
+    tags = tag -l
+    branches = branch -a
+    remotes = remote -v
+
+    # List aliases
+    aliases = config --get-regexp alias
+
+    # Amend the currently staged files to the latest commit
+    amend = commit --amend --reuse-message=HEAD
+
+    # Credit an author on the latest commit
+    credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
+
+    # Interactive rebase with the given number of latest commits
+    reb = "!r() { git rebase -i HEAD~$1; }; r"
+
+    # Remove the old tag with this name and tag the latest commit with it.
+    retag = "!r() { git tag -d $1 && git push origin :refs/tags/$1 && git tag $1; }; r"
+
+    # Find branches containing commit
+    fb = "!f() { git branch -a --contains $1; }; f"
+
+    # Find tags containing commit
+    ft = "!f() { git describe --always --contains $1; }; f"
+
+    # Find commits by source code
+    fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
+
+    # Find commits by commit message
+    fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
+
+    # Remove branches that have already been merged with master
+    # a.k.a. ‘delete merged’
+    dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+
+    # List contributors with number of commits
+    contributors = shortlog --summary --numbered
+
+    # Merge GitHub pull request on top of the current branch or,
+    # if a branch name is specified, on top of the specified branch
+    mpr = "!f() { \
+      declare currentBranch=\"$(git symbolic-ref --short HEAD)\"; \
+      declare branch=\"${2:-$currentBranch}\"; \
+      if [ $(printf \"%s\" \"$1\" | grep '^[0-9]\\+$' > /dev/null; printf $?) -eq 0 ]; then \
+        git fetch origin refs/pull/$1/head:pr/$1 && \
+        git checkout -B $branch && \
+        git rebase $branch pr/$1 && \
+        git checkout -B $branch && \
+        git merge pr/$1 && \
+        git branch -D pr/$1 && \
+        git commit --amend -m \"$(git log -1 --pretty=%B)\n\nCloses #$1.\"; \
+      fi \
+    }; f"
+[difftool "sourcetree"]
+    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+
+[mergetool "sourcetree"]
+    cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+    trustExitCode = true
+
+[commit]
+    template = /Users/redfort/.stCommitMsg
+
+[filter "lfs"]
+    smudge = git-lfs smudge -- %f
+	  process = git-lfs filter-process
+	  required = true
+	  clean = git-lfs clean -- %f

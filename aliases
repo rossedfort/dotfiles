@@ -35,8 +35,8 @@ alias gco="git checkout"
 alias gcob="git checkout -b"
 alias gcod="git checkout develop"
 alias gcom="git checkout master"
-alias oops="git reset --hard"
-alias gs="git status"
+alias gs="git s"
+alias gl="git l"
 
 # List all files colorized in long format
 alias l="ls -lFGgohqv"
