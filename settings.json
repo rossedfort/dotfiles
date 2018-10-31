@@ -25,7 +25,6 @@
   "editor.smoothScrolling": true,
   "markdown.extension.preview.autoShowPreviewToSide": true,
   "extensions.ignoreRecommendations": false,
-  "editor.renderWhitespace": "boundary",
   "editor.fontLigatures": true,
   "vsicons.projectDetection.autoReload": true,
   "files.exclude": {
@@ -35,7 +34,6 @@
     "**/CVS": true,
     "**/.DS_Store": true
   },
-  "workbench.iconTheme": "eq-material-theme-icons",
   "git.path": "/usr/bin/git",
   "gitlens.advanced.messages": {
     "suppressShowKeyBindingsNotice": true
@@ -51,12 +49,17 @@
   "terminal.integrated.shell.osx": "/bin/bash",
   "gitlens.mode.active": "zen",
   "diffEditor.ignoreTrimWhitespace": true,
-  "github.hosts": [
+  "editor.fontFamily": "Fira Code",
+  "spotify.showPauseButton": true,
+  "spotify.showPlayButton": true,
+  "spotify.trackInfoFormat": "artistName - trackName - albumName",
+  "githubPullRequests.hosts": [
     {
       "host": "https://github.com",
       "username": "oauth",
       "token": "system"
     }
   ],
-  "editor.fontFamily": "Fira Code"
+  "editor.renderWhitespace": "boundary",
+  "workbench.iconTheme": "eq-material-theme-icons"
 }
