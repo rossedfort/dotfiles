@@ -4,7 +4,7 @@
     name = Ross Edfort
     email = ross.edfort@wazeedigital.com
 [core]
-    excludesfile = /Users/redfort/.gitignore_global
+    excludesfile = ~/.gitignore_global
 [color]
     ui = auto
 [color "branch"]
