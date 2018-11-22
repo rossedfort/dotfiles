@@ -37,7 +37,7 @@ __prompt_command() {
     exitStyle="${bright_red}✗";
   fi
 
-  PS1+="${bright_red}\u${reset} @ ${bright_yellow}\h${reset} in ${bright_green}\w${reset}$(git_info)${reset} ${exitStyle}${reset}\n$ ";
+  PS1+="${bright_red}\u${reset} at ${bright_yellow}\h${reset} in ${bright_green}\w${reset}$(git_info)${reset} ${exitStyle}${reset}\n$ ";
   export PS1;
   PS2="${bright_cyan}→ ${reset}";
   export PS2;

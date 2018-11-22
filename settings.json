@@ -17,7 +17,6 @@
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "editor.renderIndentGuides": true,
   "vsicons.presets.angular": true,
-  "workbench.colorTheme": "Material Theme High Contrast",
   "workbench.startupEditor": "welcomePage",
   "atomKeymap.promptV3Features": true,
   "editor.multiCursorModifier": "alt",
@@ -25,7 +24,6 @@
   "editor.smoothScrolling": true,
   "markdown.extension.preview.autoShowPreviewToSide": true,
   "extensions.ignoreRecommendations": false,
-  "editor.fontLigatures": true,
   "vsicons.projectDetection.autoReload": true,
   "files.exclude": {
     "**/.git": false,
@@ -49,7 +47,6 @@
   "terminal.integrated.shell.osx": "/bin/bash",
   "gitlens.mode.active": "zen",
   "diffEditor.ignoreTrimWhitespace": true,
-  "editor.fontFamily": "Fira Code",
   "spotify.showPauseButton": true,
   "spotify.showPlayButton": true,
   "spotify.trackInfoFormat": "artistName - trackName - albumName",
@@ -61,5 +58,9 @@
     }
   ],
   "editor.renderWhitespace": "boundary",
-  "workbench.iconTheme": "eq-material-theme-icons"
+  "workbench.iconTheme": "vscode-icons",
+  "editor.fontFamily": "Fira Code",
+  "editor.fontLigatures": true,
+  "editor.fontWeight": "300",
+  "workbench.colorTheme": "One Dark Pro"
 }
