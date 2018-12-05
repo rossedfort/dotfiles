@@ -16,15 +16,11 @@
   "workbench.statusBar.visible": true,
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "editor.renderIndentGuides": true,
-  "vsicons.presets.angular": true,
   "workbench.startupEditor": "welcomePage",
-  "atomKeymap.promptV3Features": true,
   "editor.multiCursorModifier": "alt",
   "editor.minimap.enabled": false,
   "editor.smoothScrolling": true,
-  "markdown.extension.preview.autoShowPreviewToSide": true,
   "extensions.ignoreRecommendations": false,
-  "vsicons.projectDetection.autoReload": true,
   "files.exclude": {
     "**/.git": false,
     "**/.svn": true,
@@ -36,13 +32,10 @@
   "gitlens.advanced.messages": {
     "suppressShowKeyBindingsNotice": true
   },
-  "gitlens.historyExplorer.enabled": true,
-  "materialTheme.fixIconsRunning": false,
   "terminal.external.osxExec": "iTerm.app",
   "terminal.integrated.copyOnSelection": true,
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.fontSize": 12,
-  "tslint.alwaysShowStatus": true,
   "terminal.integrated.scrollback": 5000,
   "terminal.integrated.shell.osx": "/bin/bash",
   "gitlens.mode.active": "zen",
@@ -50,17 +43,9 @@
   "spotify.showPauseButton": true,
   "spotify.showPlayButton": true,
   "spotify.trackInfoFormat": "artistName - trackName - albumName",
-  "githubPullRequests.hosts": [
-    {
-      "host": "https://github.com",
-      "username": "oauth",
-      "token": "system"
-    }
-  ],
   "editor.renderWhitespace": "boundary",
   "workbench.iconTheme": "vscode-icons",
   "editor.fontFamily": "Fira Code",
   "editor.fontLigatures": true,
-  "editor.fontWeight": "300",
   "workbench.colorTheme": "One Dark Pro"
 }

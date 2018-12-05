@@ -2,7 +2,7 @@
     default = simple
 [user]
     name = Ross Edfort
-    email = ross.edfort@wazeedigital.com
+    email = rossedfort@gmail.com
 [core]
     excludesfile = ~/.gitignore_global
 [color]
