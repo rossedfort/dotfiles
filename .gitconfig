@@ -1,8 +1,9 @@
 [push]
     default = simple
 [user]
+    username = rossedfort
     name = Ross Edfort
-    email = rossedfort@gmail.com
+    email = ross.edfort@sendgrid.com
 [core]
     excludesfile = ~/.gitignore_global
 [color]
