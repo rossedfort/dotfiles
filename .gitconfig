@@ -25,10 +25,11 @@
 [alias]
   # Shorthand (shorter versions of common operations, sometimes with better defaults)
     up       = "!git remote update -p; git merge --ff-only @{u}"
-    d        = diff --patience --ignore-space-change
     co       = checkout
     st       = status
     praise   = blame
+    pu       = "!git pull origin `git brcrnt`"
+    po       = "!git push origin `git brcrnt`"
 
   # Commits
     shas     = log --pretty=format:\"%H\"
@@ -64,10 +65,6 @@
 
     # remove local branches that were created from `git pr`
     pr-clean = "!git for-each-ref refs/heads/pr/* --format='%(refname)' | while read ref ; do branch=${ref#refs/heads/} ; git branch -D $branch ; done"
-
-    # Git objects (for low-level exploration of git objects)
-    type     = cat-file -t
-    dump     = cat-file -p
 
     # View abbreviated SHA, description, and history graph of the latest 20 commits
     l = log --pretty=oneline -n 20 --graph --abbrev-commit

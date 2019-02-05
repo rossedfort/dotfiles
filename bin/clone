@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+function red() {
+  echo -e "\033[1;31m${1}\033[0m ${2}"
+}
+
+function green() {
+  echo -e "\033[1;32m${1}\033[0m ${2}"
+}
+
+if [ -z ${GIT_HOME+x} ]; then
+  red "✘" "\$GIT_HOME is unset"
+  exit 1
+fi
+
+if [ ! -d "$GIT_HOME" ]; then
+  red "✘" "\$GIT_HOME doesn't exist, creating it"
+  mkdir -p "$GIT_HOME"
+  green "✔︎" "Created $GIT_HOME"
+fi
+
+if [ ! -n "$1" ] || [ ! -n "$2" ]; then
+  red "✘" "Please sepecify a user and a repo"
+  echo "  clone <user> <repo>"
+  exit 1
+fi
+
+git_url="git@github.com:$1/$2.git"
+target_dir="$GIT_HOME/$1/$2"
+
+green "►" "Cloning $git_url into $target_dir"
+
+git clone $git_url $target_dir --quiet || exit 1
+
+green "►" "Done!"
+echo "$target_dir" | pbcopy
+green "✔︎" "Path to new repo copied to clipboard"
+exit 0

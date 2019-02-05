@@ -1,33 +1,37 @@
 #!/usr/bin/env bash
 
+alias yarn="clear; say \"use npm\"; npm run $1"
+alias mc="cd ~/src/github.com/sendgrid/marketing-campaigns"
+
 # general
 alias a='atom'
 alias c='code'
 alias dotfiles="c ~/dotfiles"
-alias obp="vim ~/dotfiles/.bash_profile"
+alias obp="c ~/dotfiles/.bash_profile"
 alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\'' -e '\''s/^/   /'\'' -e '\''s/-/|/'\'' | less'
 alias f='open -a Finder ./'
 alias pw='cat ~/.pw | tr -d "\r\n" | pbcopy'
-alias faf="find . -name "$1" -print -type f"
-alias fif="grep -rin --colour=auto "$1" "$2""
+alias faf="find . -name $1 -print -type f"
+alias fif="grep -rin --colour=auto $1 $2"
 alias d="cd ~"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
+alias notes="code ~/notes"
 
 # git
-alias gi="git init"
-alias gb="git br"
-alias gc="git commit -m"
-alias gps="git push"
-alias gpso="git push origin"
-alias gpl="git pull"
-alias ga="git add . && git status"
-alias gco="git checkout"
-alias gcob="git checkout -b"
-alias gcod="git checkout develop"
-alias gcom="git checkout master"
-alias gs="git s"
-alias gl="git l"
+# alias gi="git init"
+# alias gb="git br"
+# alias gc="git commit -m"
+# alias gps="git push"
+# alias gpso="git push origin"
+# alias gpl="git pull"
+# alias ga="git add . && git status"
+# alias gco="git checkout"
+# alias gcob="git checkout -b"
+# alias gcod="git checkout develop"
+# alias gcom="git checkout master"
+# alias gs="git s"
+# alias gl="git l"
 
 # List all files colorized in long format
 alias l="ls -lFGgohqv"

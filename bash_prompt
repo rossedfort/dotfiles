@@ -32,14 +32,14 @@ __prompt_command() {
   bright_cyan="\e[1;36m";
 
   if [ $EXIT -eq 0 ]; then
-    exitStyle="${bright_green}✓";
+    exitStyle="${green}✓";
   else
-    exitStyle="${bright_red}✗";
+    exitStyle="${red}✗";
   fi
 
-  PS1+="${bright_red}\u${reset} at ${bright_yellow}\h${reset} in ${bright_green}\w${reset}$(git_info)${reset} ${exitStyle}${reset}\n$ ";
+  PS1+="${red}\u${reset} at ${yellow}\h${reset} in ${green}\w${reset}$(git_info)${reset} ${exitStyle}${reset}\n$ ";
   export PS1;
-  PS2="${bright_cyan}→ ${reset}";
+  PS2="${cyan}→ ${reset}";
   export PS2;
 }
 
@@ -63,5 +63,5 @@ git_info() {
   [ -n "$aheadN" ] && marks+=" ↑$aheadN"
   [ -n "$behindN" ] && marks+=" ↓$behindN"
 
-  echo -e " on ${bright_blue}(${branch})${bright_magenta}${marks}";
+  echo -e " on ${blue}(${branch})${magenta}${marks}";
 }

@@ -22,11 +22,11 @@
   "editor.smoothScrolling": true,
   "extensions.ignoreRecommendations": false,
   "files.exclude": {
+    "**/.DS_Store": true,
     "**/.git": false,
-    "**/.svn": true,
     "**/.hg": true,
-    "**/CVS": true,
-    "**/.DS_Store": true
+    "**/.svn": true,
+    "**/CVS": true
   },
   "git.path": "/usr/bin/git",
   "gitlens.advanced.messages": {
@@ -47,5 +47,8 @@
   "workbench.iconTheme": "vscode-icons",
   "editor.fontFamily": "Fira Code",
   "editor.fontLigatures": true,
-  "workbench.colorTheme": "One Dark Pro"
+  "workbench.colorTheme": "One Dark Pro",
+  "atomKeymap.promptV3Features": true,
+  "workbench.editor.showTabs": true,
+  "git.autofetch": true
 }
