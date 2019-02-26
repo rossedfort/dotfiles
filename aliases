@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-alias yarn="clear; say \"use npm\"; npm run $1"
+# alias yarn="clear; say \"use npm\"; npm run $1"
 alias mc="cd ~/src/github.com/sendgrid/marketing-campaigns"
 
 # general
@@ -17,21 +17,6 @@ alias d="cd ~"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias notes="code ~/notes"
-
-# git
-# alias gi="git init"
-# alias gb="git br"
-# alias gc="git commit -m"
-# alias gps="git push"
-# alias gpso="git push origin"
-# alias gpl="git pull"
-# alias ga="git add . && git status"
-# alias gco="git checkout"
-# alias gcob="git checkout -b"
-# alias gcod="git checkout develop"
-# alias gcom="git checkout master"
-# alias gs="git s"
-# alias gl="git l"
 
 # List all files colorized in long format
 alias l="ls -lFGgohqv"
