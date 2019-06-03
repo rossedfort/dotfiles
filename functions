@@ -58,11 +58,10 @@ function trash () {
 
 function brewup() {
   echo 'Starting Brew Stuff 🍺'
-  exec brew update --verbose
-  exec brew upgrade --verbose
-  exec brew cleanup --verbose
-  exec brew doctor --verbose
-  exec brew update --verbose
+  brew update
+  brew upgrade
+  brew cleanup
+  brew doctor
   echo 'Brew Stuff is Over 🍺'
 }
 

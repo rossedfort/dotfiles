@@ -44,11 +44,17 @@
   "spotify.showPlayButton": true,
   "spotify.trackInfoFormat": "artistName - trackName - albumName",
   "editor.renderWhitespace": "boundary",
-  "workbench.iconTheme": "vscode-icons",
   "editor.fontFamily": "Fira Code",
   "editor.fontLigatures": true,
   "workbench.colorTheme": "One Dark Pro",
   "atomKeymap.promptV3Features": true,
   "workbench.editor.showTabs": true,
-  "git.autofetch": true
+  "git.autofetch": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.iconTheme": "vscode-icons"
 }

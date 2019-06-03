@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# alias yarn="clear; say \"use npm\"; npm run $1"
-alias mc="cd ~/src/github.com/sendgrid/marketing-campaigns"
-
 # general
 alias a='atom'
 alias c='code'
@@ -22,7 +19,7 @@ alias notes="code ~/notes"
 alias l="ls -lFGgohqv"
 
 # List all files colorized in long format, including dot files
-alias la="ls -laF"
+alias la="ls -laFG"
 
 # List only directories
 alias lsd="ls -lF | grep --color=never '^d'"

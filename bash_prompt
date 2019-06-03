@@ -32,18 +32,24 @@ __prompt_command() {
   bright_cyan="\e[1;36m";
 
   if [ $EXIT -eq 0 ]; then
-    exit="👍";
+    # exit="👍";
+    exit=" ${bright_green}✔︎${reset} ";
   else
-    exit="👎";
+    # exit="👎";
+    exit=" ${bright_red}✘${reset} ";
   fi
 
-  me="${blue}\u${reset}";
-  dir="${green}\W${reset}";
-  nodev="${yellow}[node:`node -v`]${reset}";
+  me="${blue}\u${reset} ";
+  dir=" ${green}\w${reset}" ;
+  if [ -f "package.json" ]; then
+    nodev=" ${yellow}[node:`node -v`]${reset}";
+  else
+    nodev=""
+  fi
 
-  PS1+="$me in $dir $nodev$(git_info) $exit \n$ ";
+  PS1+="${me}in${dir}${nodev}$(git_info)${exit}\n$ ";
   export PS1;
-  PS2="${cyan}→ ${reset}";
+  PS2="${cyan}→${reset} ";
   export PS2;
 }
 
