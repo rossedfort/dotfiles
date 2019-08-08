@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-PROMPT_COMMAND=__prompt_command
+PROMPT_COMMAND=prompt
 
 if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
   export TERM='gnome-256color';
@@ -8,70 +8,91 @@ elif infocmp xterm-256color >/dev/null 2>&1; then
   export TERM='xterm-256color';
 fi;
 
-__prompt_command() {
-  # set local variable to hold last command's exit status
+reset="\e[0m";
+
+white="\e[97";
+fg_default="\e[39m";
+fg_black="\e[30m";
+fg_red="\e[31m";
+fg_green="\e[32m";
+fg_yellow="\e[33m";
+fg_blue="\e[34m";
+fg_magenta="\e[35m";
+fg_cyan="\e[36m";
+fg_gray="\e[90m";
+fg_light_gray="\e[37m";
+fg_light_red="\e[91m";
+fg_light_green="\e[92m";
+fg_light_yellow="\e[93m";
+fg_light_blue="\e[94m";
+fg_light_magenta="\e[95m";
+fg_light_cyan="\e[96m";
+
+bg_default="\e[49m";
+bg_black="\e[40m";
+bg_red="\e[41m";
+bg_green="\e[42m";
+bg_yellow="\e[43m";
+bg_blue="\e[44m";
+bg_magenta="\e[45m";
+bg_cyan="\e[46m";
+bg_gray="\e[100m";
+bg_light_gray="\e[47m";
+bg_light_red="\e[101m";
+bg_light_green="\e[102m";
+bg_light_yellow="\e[103m";
+bg_light_blue="\e[104m";
+bg_light_magenta="\e[105m";
+bg_light_cyan="\e[106m";
+
+function prompt() {
   local EXIT="$?"
-  PS1=""
-  # Setup some color variables
-  reset="\e[0m";
-  default="\e[39m";
-  # Normal
-  black="\e[30m";
-  red="\e[31m";
-  green="\e[32m";
-  yellow="\e[33m";
-  blue="\e[34m";
-  magenta="\e[35m";
-  cyan="\e[36m";
-  # Bright
-  bright_red="\e[0;49;91m";
-  bright_green="\e[0;49;92m";
-  bright_yellow="\e[1;33m";
-  bright_blue="\e[1;34m";
-  bright_magenta="\e[1;35m";
-  bright_cyan="\e[1;36m";
-
   if [ $EXIT -eq 0 ]; then
-    # exit="👍";
-    exit=" ${bright_green}✔︎${reset} ";
+    exit="${fg_light_green}✔︎${reset}";
   else
-    # exit="👎";
-    exit=" ${bright_red}✘${reset} ";
+    exit="${fg_light_red}✘${reset}";
   fi
 
-  me="${blue}\u${reset} ";
-  dir=" ${green}\w${reset}" ;
-  if [ -f "package.json" ]; then
-    nodev=" ${yellow}[node:`node -v`]${reset}";
-  else
-    nodev=""
-  fi
+  me="${fg_light_blue}\u${reset}";
+  dir="${fg_light_green}\w${reset}";
 
-  PS1+="${me}in${dir}${nodev}$(git_info)${exit}\n$ ";
-  export PS1;
-  PS2="${cyan}→${reset} ";
-  export PS2;
+  PS1="${me} in ${dir}$(git_branch) ${exit}\n";
+  # printf "%${COLUMNS}s\n" "$(node_v) $(ruby_v) $(tsc_v)"
+  export PS1
+
+  PS2="${fg_cyan}→${reset}"
+  export PS2
 }
 
-git_info() {
-  [ -x "$(which git)" ] || return # git not found
+function node_v() {
+  if [ -d "./node_modules" ]; then
+    echo "node:$(node -v)"
+  fi
+}
 
-  local git_eng="env LANG=C git" # force git output in English to make our work easier
-  # get current branch name or short SHA1 hash for detached head
+function ruby_v() {
+  if [ -f ".ruby-version" ]; then
+    # regexp='[a-z]+ [0-9]\.[0-9]\.[0-9a-zA-Z]+'
+    # ruby_v=$(ruby -v)
+    # echo $ruby_v | sed $regexp
+    # echo " ${purple}|ruby:$v|${reset}"
+    # echo "ruby:$(ruby -v | sed 's/\[a-z]+ \[0-9]\.\[0-9]\.\[0-9a-zA-Z]+/g')"
+    echo ""
+  fi
+}
+
+function tsc_v() {
+  if [ -f "./node_modules/.bin/tsc" ]; then
+    echo "typescript:$(./node_modules/.bin/tsc -v | sed 's/Version //g')"
+  fi
+}
+
+function git_branch() {
+  [ -x "$(which git)" ] || return
+
+  local git_eng="env LANG=C git"
   local branch="$($git_eng symbolic-ref --short HEAD 2>/dev/null || $git_eng describe --tags --always 2>/dev/null)"
-  [ -n "$branch" ] || return # git branch not found
+  [ -n "$branch" ] || return
 
-  local marks='';
-
-  # is branch modified?
-  [ -n "$($git_eng status --porcelain)" ] && marks+=" △ "
-
-  # how many commits local branch is ahead/behind of remote?
-  local stat="$($git_eng status --porcelain --branch | grep '^##' | grep -o '\[.\+\]$')"
-  local aheadN="$(echo $stat | grep -o 'ahead [[:digit:]]\+' | grep -o '[[:digit:]]\+')"
-  local behindN="$(echo $stat | grep -o 'behind [[:digit:]]\+' | grep -o '[[:digit:]]\+')"
-  [ -n "$aheadN" ] && marks+=" ↑$aheadN"
-  [ -n "$behindN" ] && marks+=" ↓$behindN"
-
-  echo -e " on ${cyan}(${branch})${reset}${magenta}${marks}${reset}";
+  echo -e " ${fg_yellow}(${branch})${reset}";
 }

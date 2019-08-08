@@ -46,7 +46,6 @@
   "editor.renderWhitespace": "boundary",
   "editor.fontFamily": "Fira Code",
   "editor.fontLigatures": true,
-  "workbench.colorTheme": "One Dark Pro",
   "atomKeymap.promptV3Features": true,
   "workbench.editor.showTabs": true,
   "git.autofetch": true,
@@ -56,5 +55,6 @@
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "workbench.colorTheme": "Relaxed",
   "workbench.iconTheme": "vscode-icons"
 }
