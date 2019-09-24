@@ -18,3 +18,5 @@ fi
 [ ! -L "$HOME/.gitconfig" ] && ln -s "$DOTFILES_PATH/.gitconfig" "$HOME"
 [ ! -L "$HOME/.gitignore_global" ] && ln -s "$DOTFILES_PATH/.gitignore_global" "$HOME"
 [ ! -L "$HOME/.inputrc" ] && ln -s "$DOTFILES_PATH/.inputrc" "$HOME"
+
+. $DOTFILES_PATH/z/z.sh
