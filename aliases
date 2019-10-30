@@ -1,68 +1,37 @@
 #!/bin/zsh
 
-# general
 alias a='atom'
 alias c='code'
-alias dotfiles="c ~/dotfiles"
-alias obp="c ~/dotfiles/.bash_profile"
+alias dotfiles="c $DOTFILES_PATH"
 alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\'' -e '\''s/^/   /'\'' -e '\''s/-/|/'\'' | less'
 alias f='open -a Finder ./'
-alias pw='cat ~/.pw | tr -d "\r\n" | pbcopy'
-alias faf="find . -name $1 -print -type f"
-alias fif="grep -rin --colour=auto $1 $2"
-alias d="cd ~"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
-alias notes="code ~/notes"
 alias weather='curl "wttr.in?format=3"'
 alias gitclean='git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d'
 # List all files colorized in long format
 alias l="ls -lFGgohqv"
-
 # List all files colorized in long format, including dot files
 alias la="ls -laFG"
-
 # List only directories
 alias lsd="ls -lF | grep --color=never '^d'"
-
-# Google Chrome
-alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
-alias canary='/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary'
-
-# IP addresses
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias localip="ipconfig getifaddr en0"
-alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
-
 # Trim new lines and copy to clipboard
 alias c="tr -d '\n' | pbcopy"
-
 # Recursively delete `.DS_Store` files
 alias rmds="find . -type f -name '*.DS_Store' -ls -delete"
-
-# Empty the Trash on all mounted volumes and the main HDD.
-# Also, clear Apple’s System Logs to improve shell startup speed.
-# Finally, clear download history from quarantine. https://mths.be/bum
-alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl; sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent'"
-
 # Show/hide hidden files in Finder
 alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
 alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
-
 # Hide/show all desktop icons (useful when presenting)
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
-
 # URL-encode strings
 alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
-
 # Disable Spotlight
 alias spotoff="sudo mdutil -a -i off"
 # Enable Spotlight
 alias spoton="sudo mdutil -a -i on"
-
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec ${SHELL} -l"
-
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'

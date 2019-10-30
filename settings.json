@@ -2,7 +2,7 @@
   "editor.tabSize": 2,
   "html.format.enable": false,
   "editor.scrollBeyondLastLine": true,
-  "window.zoomLevel": 0,
+  "window.zoomLevel": 1,
   "search.exclude": {
     ".git/**": true,
     "*.log": true,
@@ -38,7 +38,7 @@
   "terminal.integrated.fontSize": 12,
   "terminal.integrated.scrollback": 5000,
   "terminal.integrated.shell.osx": "/bin/bash",
-  "gitlens.mode.active": "zen",
+  "gitlens.mode.active": "review",
   "diffEditor.ignoreTrimWhitespace": true,
   "spotify.showPauseButton": true,
   "spotify.showPlayButton": true,
