@@ -14,10 +14,8 @@ unset file;
 [ ! -L "$HOME/.gitconfig" ] && ln -s "$DOTFILES_PATH/.gitconfig" "$HOME"
 [ ! -L "$HOME/.gitignore_global" ] && ln -s "$DOTFILES_PATH/.gitignore_global" "$HOME"
 
-
-export ZSH=$DOTFILES_PATH/.oh-my-zsh
+export ZSH=$DOTFILES_PATH/oh-my-zsh
 export ZSH_THEME="redfort"
-export ZSH_CUSTOM=$DOTFILES_PATH/zsh-custom
 
 plugins=(git node npm osx z)
 
