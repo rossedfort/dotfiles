@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/zsh
 
 # general
 alias a='atom'
@@ -14,7 +14,8 @@ alias d="cd ~"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias notes="code ~/notes"
-
+alias weather='curl "wttr.in?format=3"'
+alias gitclean='git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d'
 # List all files colorized in long format
 alias l="ls -lFGgohqv"
 
