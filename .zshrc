@@ -13,6 +13,7 @@ unset file;
 [ ! -L "$HOME/Library/Application Support/Code/User/settings.json" ] && ln -s "$DOTFILES_PATH/settings.json" "$HOME/Library/Application Support/Code/User/"
 [ ! -L "$HOME/.gitconfig" ] && ln -s "$DOTFILES_PATH/.gitconfig" "$HOME"
 [ ! -L "$HOME/.gitignore_global" ] && ln -s "$DOTFILES_PATH/.gitignore_global" "$HOME"
+[ ! -L "$HOME/.vimrc" ] && ln -s "$DOTFILES_PATH/.vimrc" "$HOME"
 
 plugins=(git node npm osx z)
 autoload -U up-line-or-beginning-search
