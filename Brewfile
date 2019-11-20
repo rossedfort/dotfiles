@@ -20,6 +20,7 @@ brew "node", link: false
 brew "python"
 brew "python@2"
 brew "rbenv"
+brew "ripgrep"
 brew "tree"
 brew "wget"
 brew "yarn"
