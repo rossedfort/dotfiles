@@ -4,7 +4,7 @@ if [ -z ${DOTFILES_PATH+x} ]; then
   echo "DOTFILES_PATH is unset";
 fi
 
-for file in $DOTFILES_PATH/{path,exports,aliases,functions}; do
+for file in $DOTFILES_PATH/{path,exports,functions}; do
   [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
@@ -25,3 +25,5 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'
 
 source $ZSH/oh-my-zsh.sh
+# I have aliases that override oh-my-zsh aliases
+source $DOTFILES_PATH/aliases
