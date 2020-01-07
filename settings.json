@@ -14,7 +14,6 @@
   },
   "workbench.sideBar.location": "left",
   "workbench.statusBar.visible": true,
-  "workbench.editor.enablePreviewFromQuickOpen": false,
   "editor.renderIndentGuides": true,
   "workbench.startupEditor": "welcomePage",
   "editor.multiCursorModifier": "alt",
@@ -58,5 +57,7 @@
   "workbench.iconTheme": "vscode-icons",
   "[json]": {
     "editor.defaultFormatter": "vscode.json-language-features"
-  }
+  },
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.enablePreviewFromQuickOpen": false
 }

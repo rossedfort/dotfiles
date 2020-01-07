@@ -15,7 +15,7 @@ unset file;
 [ ! -L "$HOME/.gitignore_global" ] && ln -s "$DOTFILES_PATH/.gitignore_global" "$HOME"
 [ ! -L "$HOME/.vimrc" ] && ln -s "$DOTFILES_PATH/.vimrc" "$HOME"
 
-plugins=(git node npm osx z)
+plugins=(git node npm osx z nvm)
 autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
 zle -N up-line-or-beginning-search
@@ -27,3 +27,5 @@ zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'
 source $ZSH/oh-my-zsh.sh
 # I have aliases that override oh-my-zsh aliases
 source $DOTFILES_PATH/aliases
+
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
