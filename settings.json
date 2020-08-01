@@ -15,7 +15,7 @@
   "workbench.sideBar.location": "left",
   "workbench.statusBar.visible": true,
   "editor.renderIndentGuides": true,
-  "workbench.startupEditor": "welcomePage",
+  "workbench.startupEditor": "none",
   "editor.multiCursorModifier": "alt",
   "editor.minimap.enabled": false,
   "editor.smoothScrolling": true,
@@ -41,9 +41,7 @@
   "diffEditor.ignoreTrimWhitespace": true,
   "spotify.showPauseButton": true,
   "spotify.showPlayButton": true,
-  "spotify.trackInfoFormat": "artistName - trackName - albumName",
   "editor.fontFamily": "Fira Code",
-  "editor.fontLigatures": true,
   "atomKeymap.promptV3Features": true,
   "workbench.editor.showTabs": true,
   "git.autofetch": true,
@@ -53,11 +51,21 @@
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "workbench.colorTheme": "Relaxed",
   "workbench.iconTheme": "vscode-icons",
   "[json]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
-  "workbench.editor.enablePreview": false,
-  "workbench.editor.enablePreviewFromQuickOpen": false
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "[markdown]": {
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+  },
+  "search.searchOnTypeDebouncePeriod": 500,
+  "codesnap.transparentBackground": true,
+  "codesnap.realLineNumbers": true,
+  "codesnap.target": "window",
+  "codesnap.showWindowControls": false,
+  "codesnap.showLineNumbers": false,
+  "codesnap.containerPadding": "1em",
+  "editor.fontLigatures": true,
+  "workbench.colorTheme": "New Moon"
 }

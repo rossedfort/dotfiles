@@ -36,3 +36,6 @@ alias reload="exec ${SHELL} -l"
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
 alias git="hub"
+alias faf="find . -name $1 -print -type f"
+alias fif="grep -rin --colour=auto "$1" "$2""
+alias fif="grep -rin --colour=auto $1 $2"
