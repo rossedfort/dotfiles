@@ -9,20 +9,6 @@ function mkd() {
   mkdir -p "$@" && cd "$_";
 }
 
-# Determine size of a file or total size of a directory
-function fs() {
-  if du -b /dev/null > /dev/null 2>&1; then
-    local arg=-sbh;
-  else
-    local arg=-sh;
-  fi
-  if [[ -n "$@" ]]; then
-    du $arg -- "$@";
-  else
-    du $arg .[^.]* ./*;
-  fi;
-}
-
 # Create a data URL from a file
 function dataurl() {
   local mimeType=$(file -b --mime-type "$1");
@@ -30,16 +16,6 @@ function dataurl() {
     mimeType="${mimeType};charset=utf-8";
   fi
   echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')";
-}
-
-# Syntax-highlight JSON strings or files
-# Usage: `json '{"foo":42}'` or `echo '{"foo":42}' | json`
-function json() {
-  if [ -t 0 ]; then # argument
-    python -mjson.tool <<< "$*" | pygmentize -l javascript;
-  else # pipe
-    python -mjson.tool | pygmentize -l javascript;
-  fi;
 }
 
 # UTF-8-encode a string of Unicode symbols
@@ -64,19 +40,6 @@ function brewup() {
   echo 'Brew Stuff is Over 🍺'
 }
 
-function brpb {
-  current_git_branch="$(git rev-parse --abbrev-ref HEAD)"
-  status="$?"
-
-  if [[ "0" -ne "$status" ]]
-  then
-    exit "$status"
-  fi
-
-  echo "$current_git_branch"
-  echo -n "$current_git_branch" | pbcopy
-}
-
 function howbig() {
   target="$1"
 
@@ -86,4 +49,27 @@ function howbig() {
   size=`du -c -h "$target" | tail -1 | awk '{ print $1 }'`
 
   echo "$target is $size"
+}
+
+function fif() {
+  local target="$1"
+  local search="$2"
+  local usage="Usage: fif ./target 'search'"
+
+  [[ -z $target ]] && echo "$usage\nMissing param 'target'" && return 1
+  [[ -z $search ]] && echo "$usage\nMissing param 'search'" && return 1
+
+  echo "Searching for \"$search\" in \"$target\""
+  grep --color=auto -rin $search $target
+}
+
+function faf() {
+  local target="$1"
+  local search="$2"
+  local usage="Usage: faf ./target 'search'"
+
+  [[ -z $target ]] && echo "$usage\nMissing param 'target'" && return 1
+  [[ -z $search ]] && echo "$usage\nMissing param 'search'" && return 1
+
+  find $target -name $search -print -type f
 }
