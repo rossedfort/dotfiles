@@ -39,7 +39,6 @@ alias path='echo -e ${PATH//:/\\n}'
 alias wttr="curl 'wttr.in/Denver?format=%t+%c+%C+%w+%o'"
 alias scripts="cat package.json | jq .scripts"
 alias clg="git diff master | grep console.log"
-alias git=hub
 alias mkdir=mkd
 alias nom=npm
 alias cat=bat

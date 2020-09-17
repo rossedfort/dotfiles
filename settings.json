@@ -4,13 +4,15 @@
   "editor.scrollBeyondLastLine": true,
   "window.zoomLevel": 1,
   "search.exclude": {
+    "_vendor/**": true,
     ".git/**": true,
     "*.log": true,
-    "**/node_modules": true,
     "**/bower_components": true,
-    "dist/**": true,
+    "**/node_modules": true,
+    "coverage_js/**": true,
     "coverage/**": true,
-    "coverage_js/**": true
+    "dist/**": true,
+    "vendor/**": true
   },
   "workbench.sideBar.location": "left",
   "workbench.statusBar.visible": true,
@@ -67,5 +69,6 @@
   "codesnap.showLineNumbers": false,
   "codesnap.containerPadding": "1em",
   "editor.fontLigatures": true,
+  "eslint.format.enable": true,
   "workbench.colorTheme": "New Moon"
 }

@@ -21,12 +21,14 @@ export LANG='en_US.UTF-8';
 export LC_ALL='C'
 # Highlight section titles in manual pages.
 export LESS_TERMCAP_md="${yellow}";
-# Don’t clear the screen after quitting a manual page.
-export MANPAGER='less -X';
 # Node Version Manager dir
 export NVM_DIR="$HOME/.nvm"
 # FZF Config
 export FZF_BASE=/usr/local/bin/fzf
 export FZF_DEFAULT_OPTS="--no-height"
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
-
+# Manual Pages
+# Don’t clear the screen after quitting a manual page.
+# export MANPAGER='less -X';
+# Colorizes `man` output. Depends on `bat`
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
