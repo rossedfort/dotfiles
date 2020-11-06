@@ -16,9 +16,8 @@
   },
   "workbench.sideBar.location": "left",
   "workbench.statusBar.visible": true,
-  "editor.renderIndentGuides": true,
+  "editor.renderIndentGuides": false,
   "workbench.startupEditor": "none",
-  "editor.multiCursorModifier": "alt",
   "editor.minimap.enabled": false,
   "editor.smoothScrolling": true,
   "extensions.ignoreRecommendations": false,
@@ -39,7 +38,6 @@
   "terminal.integrated.fontSize": 12,
   "terminal.integrated.scrollback": 5000,
   "terminal.integrated.shell.osx": "/bin/zsh",
-  "gitlens.mode.active": "zen",
   "diffEditor.ignoreTrimWhitespace": true,
   "spotify.showPauseButton": true,
   "spotify.showPlayButton": true,
@@ -70,5 +68,8 @@
   "codesnap.containerPadding": "1em",
   "editor.fontLigatures": true,
   "eslint.format.enable": true,
-  "workbench.colorTheme": "New Moon"
+  "workbench.colorTheme": "New Moon",
+  "editor.renderControlCharacters": false,
+  "gitlens.mode.active": "zen",
+  "go.buildTags": "unit"
 }

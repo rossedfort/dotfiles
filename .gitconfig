@@ -6,7 +6,7 @@
     email = ross.edfort@sendgrid.com
 [core]
     excludesfile = ~/.gitignore_global
-    pager = delta --dark --plus-color="#576e52" --plus-emph-color="#75966e" --minus-color="#6e4d4b" --minus-emph-color="#875754"
+    pager = delta --dark
 [color]
     ui = auto
 [color "branch"]
@@ -22,7 +22,9 @@
     added = green
     changed = yellow
     untracked = cyan
-
+[delta]
+    plus-color = "#012800"
+    minus-color = "#340001"
 [alias]
   # Shorthand (shorter versions of common operations, sometimes with better defaults)
     up       = "!git remote update -p; git merge --ff-only @{u}"
