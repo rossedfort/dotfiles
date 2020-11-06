@@ -3,7 +3,7 @@
 [user]
     username = rossedfort
     name = Ross Edfort
-    email = ross.edfort@sendgrid.com
+    email = rossedfort@gmail.com
 [core]
     excludesfile = ~/.gitignore_global
     pager = delta --dark
