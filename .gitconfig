@@ -1,5 +1,5 @@
 [push]
-    default = simple
+  # default = simple
 [user]
     username = rossedfort
     name = Ross Edfort

@@ -54,9 +54,10 @@ function prompt() {
   fi
 
   me="${fg_light_blue}\u${reset}";
+  host="${fg_light_blue}\h${reset}"
   dir="${fg_light_green}\w${reset}";
 
-  PS1="${me} in ${dir}$(git_branch) ${exit}\n";
+  PS1="${me}@${host} in ${dir}$(git_branch) ${exit}\n";
   # printf "%${COLUMNS}s\n" "$(node_v) $(ruby_v) $(tsc_v)"
   export PS1
 
