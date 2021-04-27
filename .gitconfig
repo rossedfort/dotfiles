@@ -23,8 +23,9 @@
     changed = yellow
     untracked = cyan
 [delta]
-    plus-color = "#012800"
-    minus-color = "#340001"
+    line-numbers = true
+    plus-style = "syntax #012800"
+    minus-style = "syntax #340001"
 [alias]
   # Shorthand (shorter versions of common operations, sometimes with better defaults)
     up       = "!git remote update -p; git merge --ff-only @{u}"
@@ -78,7 +79,7 @@
     s = status -s
 
     # Show the diff between the latest commit and the current state
-    d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+    d = !"git diff-index --quiet HEAD -- || clear; git diff --patch-with-stat"
 
     # `git di $number` shows the diff between the state `$number` revisions ago and the current state
     di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"

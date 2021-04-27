@@ -27,6 +27,7 @@ export NVM_DIR="$HOME/.nvm"
 export FZF_BASE=/usr/local/bin/fzf
 export FZF_DEFAULT_OPTS="--no-height"
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
+export BAT_THEME="ansi-dark"
 # Manual Pages
 # Don’t clear the screen after quitting a manual page.
 # export MANPAGER='less -X';

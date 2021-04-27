@@ -14,7 +14,8 @@ unset file;
 [ ! -L "$HOME/.gitconfig" ] && ln -s "$DOTFILES_PATH/.gitconfig" "$HOME"
 [ ! -L "$HOME/.gitignore_global" ] && ln -s "$DOTFILES_PATH/.gitignore_global" "$HOME"
 
-plugins=(git node npm osx z nvm fzf rbenv)
+plugins=(git node npm osx z fzf rbenv)
+zmodload zsh/zprof
 autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
 zle -N up-line-or-beginning-search
@@ -22,9 +23,6 @@ zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search # Up
 bindkey "^[[B" down-line-or-beginning-search # Down
 zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'
-
-# This loads nvm
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 # This loads rbenv
 eval "$(rbenv init -)"

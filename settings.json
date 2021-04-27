@@ -16,7 +16,6 @@
   },
   "workbench.sideBar.location": "left",
   "workbench.statusBar.visible": true,
-  "editor.renderIndentGuides": false,
   "workbench.startupEditor": "none",
   "editor.minimap.enabled": false,
   "editor.smoothScrolling": true,
@@ -70,6 +69,13 @@
   "eslint.format.enable": true,
   "workbench.colorTheme": "New Moon",
   "editor.renderControlCharacters": false,
+  "workbench.editor.enablePreview": false,
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "gitlens.mode.active": "zen",
-  "go.buildTags": "unit"
+  "eslint.run": "onSave"
 }
