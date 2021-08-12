@@ -70,12 +70,11 @@
   "workbench.colorTheme": "New Moon",
   "editor.renderControlCharacters": false,
   "workbench.editor.enablePreview": false,
-  "[dockerfile]": {
-    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
-  },
+  "githubPullRequests.focusedMode": true,
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "eslint.run": "onSave",
+  "editor.renderWhitespace": "all",
   "gitlens.mode.active": "zen",
-  "eslint.run": "onSave"
 }

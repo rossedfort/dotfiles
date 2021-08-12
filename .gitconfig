@@ -1,169 +1,126 @@
 [push]
-    default = simple
+		default = simple
 [user]
-    username = rossedfort
-    name = Ross Edfort
-    email = rossedfort@gmail.com
+		username = rossedfort
+		name = Ross Edfort
+		email = rossedfort@gmail.com
 [core]
-    excludesfile = ~/.gitignore_global
-    pager = delta --dark
+		excludesfile = ~/.gitignore_global
+		pager = delta --dark
 [color]
-    ui = auto
+		ui = auto
 [color "branch"]
-    current = yellow reverse
-    local = yellow
-    remote = green
+		current = yellow reverse
+		local = yellow
+		remote = green
 [color "diff"]
-    meta = yellow bold
-    frag = magenta bold
-    old = red bold
-    new = green bold
+		meta = yellow bold
+		frag = magenta bold
+		old = red bold
+		new = green bold
 [color "status"]
-    added = green
-    changed = yellow
-    untracked = cyan
+		added = green
+		changed = yellow
+		untracked = cyan
 [delta]
-    line-numbers = true
-    plus-style = "syntax #012800"
-    minus-style = "syntax #340001"
+		line-numbers = true
+		plus-style = "syntax #012800"
+		minus-style = "syntax #340001"
 [alias]
-  # Shorthand (shorter versions of common operations, sometimes with better defaults)
-    up       = "!git remote update -p; git merge --ff-only @{u}"
-    co       = checkout
-    st       = status
-    praise   = blame
-    pu       = "!git pull origin `git brcrnt`"
-    po       = "!git push origin `git brcrnt`"
+		# Shorthand (shorter versions of common operations, sometimes with better defaults)
+		pu       = "!git pull origin `git brcrnt`"
+		po       = "!git push origin `git brcrnt`"
 
-  # Commits
-    shas     = log --pretty=format:\"%H\"
-    hist     = log --pretty=format:\"%Cgreen%h%Creset %Cblue%ad%Creset %s%C(yellow)%d%Creset %Cblue[%an]%Creset\" --graph --date=short
+		# Commits
+		shas     = log --pretty=format:\"%H\"
+		hist     = log --pretty=format:\"%Cgreen%h%Creset %Cblue%ad%Creset %s%C(yellow)%d%Creset %Cblue[%an]%Creset\" --graph --date=short
 
-  # Branches
-    # --all gives local and remote, --verbose 1x shows 1st line of log, 2x: show upstream branch
-    br       = branch --all --verbose --verbose
+		# Branches
+		# --all gives local and remote, --verbose 1x shows 1st line of log, 2x: show upstream branch
+		br       = branch --all --verbose --verbose
 
-    # list current branch
-    brcrnt   = rev-parse --abbrev-ref HEAD
+		# use fzf to checkout a branch
+		co       = !"zsh -c \"source $DOTFILES_PATH/functions && fzf-git-checkout\""
 
-    # copy branch
-    brpb     = !git brcrnt | xargs echo -n | pbcopy
+		# list current branch
+		brcrnt   = rev-parse --abbrev-ref HEAD
 
-    # Author info (who all worked on this thing?)
-      # something like number of commits by committer (doesn't quite match up, though)
-    count    = shortlog -sn
+		# copy branch
+		brpb     = !git brcrnt | xargs echo -n | pbcopy
 
-    # list people who have committed
-    authors  = ! git log --format=\"%ae %an\" | sort -u | column -t
+		# list people who have committed
+		authors  = !git log --format=\"%ae %an\" | sort -u | column -t
 
-    # Stash (slightly better stash commands... sadly, --keep-index doesn't work well enough to be useful, works for the stash, but not the pop)
-      # stash untracked files, too
-    stpush   = stash -m --include-untracked
+		# Stash (slightly better stash commands... sadly, --keep-index doesn't work well enough to be useful, works for the stash, but not the pop)
+		# stash untracked files, too
+		stpush   = stash -m --include-untracked
 
-    # when popping, remember what was in the staging area
-    stpop    = stash pop --index
+		# when popping, remember what was in the staging area
+		stpop    = stash pop --index
 
-    # Pull requests (stolen from https://github.com/pd/dotfiles/blob/e2d2418f96c5d13b4b06e3f2dff78dfb51eeb49c/gitconfig#L47-48)
-      # call with the pull request #, it will check out the pr locally
-    pr       = "!f() { remote=${2:-$(git remote|head -1)}; git fetch -fu $remote refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
+		# View abbreviated SHA, description, and history graph of the latest 20 commits
+		lo = log --pretty=oneline -n 20 --graph --abbrev-commit
 
-    # remove local branches that were created from `git pr`
-    pr-clean = "!git for-each-ref refs/heads/pr/* --format='%(refname)' | while read ref ; do branch=${ref#refs/heads/} ; git branch -D $branch ; done"
+		l = log --pretty=oneline --abbrev-commit
 
-    # View abbreviated SHA, description, and history graph of the latest 20 commits
-    lo = log --pretty=oneline -n 20 --graph --abbrev-commit
+		# View the current working tree status using the short format
+		s = status -s
 
-    l = log --pretty=oneline --abbrev-commit
+		# Show the diff between the latest commit and the current state
+		d = !"git diff-index --quiet HEAD -- || clear; git diff --patch-with-stat"
 
-    # View the current working tree status using the short format
-    s = status -s
+		# `git di $number` shows the diff between the state `$number` revisions ago and the current state
+		di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
 
-    # Show the diff between the latest commit and the current state
-    d = !"git diff-index --quiet HEAD -- || clear; git diff --patch-with-stat"
+		# Pull in remote changes for the current repository and all its submodules
+		p = !"git pull; git submodule foreach git pull origin master"
 
-    # `git di $number` shows the diff between the state `$number` revisions ago and the current state
-    di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
+		# Clone a repository including all submodules
+		c = clone --recursive
 
-    # Pull in remote changes for the current repository and all its submodules
-    p = !"git pull; git submodule foreach git pull origin master"
+		# Commit all changes
+		ca = !git add -A && git commit -av
 
-    # Clone a repository including all submodules
-    c = clone --recursive
+		# Switch to a branch, creating it if necessary
+		go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
 
-    # Commit all changes
-    ca = !git add -A && git commit -av
+		# Show verbose output about tags, branches or remotes
+		tags = tag -l
+		branches = branch -a
+		remotes = remote -v
 
-    # Switch to a branch, creating it if necessary
-    go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+		# List aliases
+		aliases = config --get-regexp alias
 
-    # Show verbose output about tags, branches or remotes
-    tags = tag -l
-    branches = branch -a
-    remotes = remote -v
+		# Amend the currently staged files to the latest commit
+		amend = commit --amend --reuse-message=HEAD
 
-    # List aliases
-    aliases = config --get-regexp alias
+		# Interactive rebase with the given number of latest commits
+		reb = "!r() { git rebase -i HEAD~$1; }; r"
 
-    # Amend the currently staged files to the latest commit
-    amend = commit --amend --reuse-message=HEAD
+		# Find branches containing commit
+		fb = "!f() { git branch -a --contains $1; }; f"
 
-    # Credit an author on the latest commit
-    credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
+		# Find tags containing commit
+		ft = "!f() { git describe --always --contains $1; }; f"
 
-    # Interactive rebase with the given number of latest commits
-    reb = "!r() { git rebase -i HEAD~$1; }; r"
+		# Find commits by source code
+		fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
 
-    # Remove the old tag with this name and tag the latest commit with it.
-    retag = "!r() { git tag -d $1 && git push origin :refs/tags/$1 && git tag $1; }; r"
+		# Find commits by commit message
+		fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
 
-    # Find branches containing commit
-    fb = "!f() { git branch -a --contains $1; }; f"
+		# Remove branches that have already been merged with master
+		# a.k.a. ‘delete merged’
+		dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
 
-    # Find tags containing commit
-    ft = "!f() { git describe --always --contains $1; }; f"
-
-    # Find commits by source code
-    fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
-
-    # Find commits by commit message
-    fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
-
-    # Remove branches that have already been merged with master
-    # a.k.a. ‘delete merged’
-    dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
-
-    # List contributors with number of commits
-    contributors = shortlog --summary --numbered
-
-    # Merge GitHub pull request on top of the current branch or,
-    # if a branch name is specified, on top of the specified branch
-    mpr = "!f() { \
-      declare currentBranch=\"$(git symbolic-ref --short HEAD)\"; \
-      declare branch=\"${2:-$currentBranch}\"; \
-      if [ $(printf \"%s\" \"$1\" | grep '^[0-9]\\+$' > /dev/null; printf $?) -eq 0 ]; then \
-        git fetch origin refs/pull/$1/head:pr/$1 && \
-        git checkout -B $branch && \
-        git rebase $branch pr/$1 && \
-        git checkout -B $branch && \
-        git merge pr/$1 && \
-        git branch -D pr/$1 && \
-        git commit --amend -m \"$(git log -1 --pretty=%B)\n\nCloses #$1.\"; \
-      fi \
-    }; f"
+		# List contributors with number of commits
+		contributors = shortlog --summary --numbered
 [difftool "sourcetree"]
-    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-
-[mergetool "sourcetree"]
-    cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-    trustExitCode = true
+		cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 
 [commit]
-    template = /Users/redfort/.stCommitMsg
+		template = /Users/redfort/.stCommitMsg
 
-[filter "lfs"]
-    smudge = git-lfs smudge -- %f
-	  process = git-lfs filter-process
-	  required = true
-	  clean = git-lfs clean -- %f
 [url "git@github.com:"]
-	insteadOf = https://github.com/
+		insteadOf = https://github.com/
