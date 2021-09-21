@@ -9,7 +9,7 @@ VSCODE_SETTINGS_PATH="$HOME/Library/Application Support/Code/User"
 # setup symlinks
 ln -s "$DOTFILES_PATH/.gitconfig" "$HOME"
 ln -s "$DOTFILES_PATH/.gitignore_global" "$HOME"
-ln -s "$DOTFILES_PATH/vscode_settings.json" "$VSCODE_SETTINGS_PATH"
+ln -s "$DOTFILES_PATH/vscode_settings.json" "$VSCODE_SETTINGS_PATH/settings.json"
 
 # Make sure new machine includes my config
 echo "source \$DOTFILES_PATH/shell/.zshenv" >>"$HOME/.zshenv"
