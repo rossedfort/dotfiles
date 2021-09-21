@@ -3,6 +3,13 @@
 # Prompt for git path
 vared -p 'Please specify your home development directory, i.e. /Users/you/dev: ' -c GIT_HOME
 
+if [[ ! -z "$GIT_HOME" ]]l then
+  echo "Plese enter your home development directory when prompted."
+  exit 1
+else
+  echo "Using $GIT_HOME for dev workspace"
+fi
+
 export GIT_HOME="$GIT_HOME"
 export DOTFILES_PATH="$GIT_HOME/rossedfort/dotfiles"
 
@@ -10,7 +17,7 @@ export DOTFILES_PATH="$GIT_HOME/rossedfort/dotfiles"
 echo "Installing Homebrew"
 /bin/zsh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
-# Git should exist, but if not, install it.
+# If git doesn't exist, install it.
 if ! type "$git" > /dev/null; then
   echo "Git not installed -- installing git"
   brew install git
@@ -20,9 +27,15 @@ fi
 echo "Cloning dotfiles repo..."
 git clone https://github.com/rossedfort/dotfiles.git "$DOTFILES_PATH"
 
+echo "Upgrading Homebrew"
+brew upgrade
+
 # Install Homebrew packages
 echo "Installing Homebrew packages"
 brew bundle install --file="$DOTFILES_PATH/Brewfile"
+
+echo "Cleaning up"
+brew cleanup
 
 # back up some system files if they exist
 VSCODE_SETTINGS_PATH="$HOME/Library/Application Support/Code/User"
@@ -57,6 +70,11 @@ defaults write com.apple.screencapture location ~/Pictures/screenshots
 echo "Please provide information for a new ssh key"
 vared -p 'Email: ' -c ssh_key_email
 vared -p 'Filename: ' -c ssh_key_filename
+
+if [[ ! -v "$ssh_key_email" || ! -v "$ssh_key_filename" ]]; then
+  echo "Please enter your new ssh key email and filename when prompted."
+  exit 1
+fi
 
 ssh-keygen \
   -t ed25519 \
