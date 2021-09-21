@@ -2,7 +2,6 @@
   "editor.tabSize": 2,
   "html.format.enable": false,
   "editor.scrollBeyondLastLine": true,
-  "window.zoomLevel": 1,
   "search.exclude": {
     "_vendor/**": true,
     ".git/**": true,
@@ -67,7 +66,7 @@
   "codesnap.containerPadding": "1em",
   "editor.fontLigatures": true,
   "eslint.format.enable": true,
-  "workbench.colorTheme": "New Moon",
+  "workbench.colorTheme": "One Dark Pro",
   "editor.renderControlCharacters": false,
   "workbench.editor.enablePreview": false,
   "githubPullRequests.focusedMode": true,
@@ -77,4 +76,9 @@
   "eslint.run": "onSave",
   "editor.renderWhitespace": "all",
   "gitlens.mode.active": "zen",
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "window.zoomLevel": 1,
 }

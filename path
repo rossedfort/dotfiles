@@ -1,7 +1,0 @@
-#!/bin/zsh
-
-fpath=(~/.zsh $fpath)
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=$DOTFILES_PATH/bin:$PATH
-export PATH="$HOME/.rbenv/bin:$PATH"
-export PATH="$HOME/bin:$PATH"

@@ -1,5 +1,6 @@
 #!/bin/zsh
-
+export GIT_HOME="$HOME/code/github.com"
+export DOTFILES_PATH="$GIT_HOME/rossedfort/dotfiles"
 export ZSH=$DOTFILES_PATH/oh-my-zsh
 export ZSH_THEME="redfort"
 # Make vim the default editor.
@@ -28,8 +29,10 @@ export FZF_BASE=/usr/local/bin/fzf
 export FZF_DEFAULT_OPTS="--no-height"
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
 export BAT_THEME="ansi-dark"
-# Manual Pages
-# Don’t clear the screen after quitting a manual page.
-# export MANPAGER='less -X';
 # Colorizes `man` output. Depends on `bat`
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export TERM_PROGRAM=iTerm.app
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:$PATH
+export PATH=$DOTFILES_PATH/bin:$PATH
+export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
