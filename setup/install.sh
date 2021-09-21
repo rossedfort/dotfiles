@@ -12,25 +12,3 @@ fi
 
 export GIT_HOME="$GIT_HOME"
 export DOTFILES_PATH="$GIT_HOME/rossedfort/dotfiles"
-
-# Update xcode command line tools
-"$DOTFILES_PATH/setup/xcode.sh"
-
-# Set up Homebrew
-"$DOTFILES_PATH/setup/brew.sh"
-
-# fzf needs to be "installed" - this should do it without prompting for input
-/usr/local/opt/fzf/install --no-update-rc --key-bindings --completion
-
-# Set up Symlinks
-"$DOTFILES_PATH/setup/symlinks.sh"
-
-# Set up MacOS defaults
-"$DOTFILES_PATH/setup/macos.sh"
-
-# Set up ssh key
-"$DOTFILES_PATH/setup/ssh.sh"
-
-# start a new shell
-echo "Finished setting up ✨"
-exec ${SHELL} -l
