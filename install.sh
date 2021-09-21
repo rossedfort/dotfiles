@@ -1,24 +1,14 @@
 #!/bin/zsh
 
-if [[ ! -v "$DOTFILES_PATH" ]]; then
-	echo "\$DOTFILES_PATH is unset"
-  echo "Set a value for \$DOTFILES_PATH and try again"
-  exit 1
-fi
+# Prompt for git path
+vared -p 'Please specify your home development directory, i.e. /Users/you/dev: ' -c GIT_HOME
 
-if [ ! -v "$GIT_HOME" ]; then
-	echo "\$GIT_HOME is unset"
-  echo "Set a value for \$GIT_HOME and try again"
-  exit 1
-fi
+export GIT_HOME="$GIT_HOME"
+export DOTFILES_PATH="$GIT_HOME/rossedfort/dotfiles"
 
 # install Homebrew
 echo "Installing Homebrew"
 /bin/zsh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-
-# Install Homebrew packages
-echo "Installing Homebrew packages"
-brew bundle install --file="$DOTFILES_PATH/Brewfile"
 
 # Git should exist, but if not, install it.
 if ! type "$git" > /dev/null; then
@@ -28,7 +18,11 @@ fi
 
 # Install dotfiles repo - use https b/c ssh key not yet set up
 echo "Cloning dotfiles repo..."
-git clone https://github.com/rossedfort/dotfiles.git "$GIT_HOME/rossedfort/dotfiles"
+git clone https://github.com/rossedfort/dotfiles.git "$DOTFILES_PATH"
+
+# Install Homebrew packages
+echo "Installing Homebrew packages"
+brew bundle install --file="$DOTFILES_PATH/Brewfile"
 
 # back up some system files if they exist
 VSCODE_SETTINGS_PATH="$HOME/Library/Application Support/Code/User"
