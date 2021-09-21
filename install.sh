@@ -3,7 +3,7 @@
 # Prompt for git path
 vared -p 'Please specify your home development directory, i.e. /Users/you/dev: ' -c GIT_HOME
 
-if [[ ! -z GIT_HOME ]]; then
+if [ -z "$GIT_HOME" ]; then
   echo "Plese enter your home development directory when prompted."
   exit 1
 else
@@ -71,7 +71,7 @@ echo "Please provide information for a new ssh key"
 vared -p 'Email: ' -c ssh_key_email
 vared -p 'Filename: ' -c ssh_key_filename
 
-if [[ ! -v "$ssh_key_email" || ! -v "$ssh_key_filename" ]]; then
+if [ -z "$ssh_key_email" || -z "$ssh_key_filename" ]; then
   echo "Please enter your new ssh key email and filename when prompted."
   exit 1
 fi
