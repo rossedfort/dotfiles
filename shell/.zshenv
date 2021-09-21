@@ -1,5 +1,5 @@
 #!/bin/zsh
-export GIT_HOME="$HOME/code/github.com"
+export GIT_HOME="$HOME/code/github"
 export DOTFILES_PATH="$GIT_HOME/rossedfort/dotfiles"
 export ZSH=$DOTFILES_PATH/oh-my-zsh
 export ZSH_THEME="redfort"

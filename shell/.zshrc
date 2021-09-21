@@ -6,13 +6,15 @@ if [ -z ${DOTFILES_PATH+x} ]; then
   exit 1
 fi
 
-plugins=(node npm osx z fzf)
 # Tell zsh completion to match case insensitively
 zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'
 
 source $ZSH/oh-my-zsh.sh
-source "$DOTFILES_PATH/shell/aliases"
-source "$DOTFILES_PATH/shell/functions"
+source "$DOTFILES_PATH/shell/aliases.sh"
+source "$DOTFILES_PATH/shell/functions.sh"
+
+source /usr/local/etc/profile.d/z.sh
+source ~/.fzf.zsh
 
 # Uncomment and run `zprof` to profile zsh shell performance
 # zmodload zsh/zprof
