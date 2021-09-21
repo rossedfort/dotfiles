@@ -18,7 +18,7 @@ echo "Installing Homebrew"
 /bin/zsh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 # If git doesn't exist, install it.
-if ! type "$git" > /dev/null; then
+if [[ ! type "$git" > /dev/null ]]; then
   echo "Git not installed -- installing git"
   brew install git
 fi
