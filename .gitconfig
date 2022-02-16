@@ -40,7 +40,7 @@
 		br       = branch --all --verbose --verbose
 
 		# use fzf to checkout a branch
-		co       = !"zsh -c \"source $DOTFILES_PATH/functions && fzf-git-checkout\""
+		co       = !"zsh -c \"source $DOTFILES_PATH/shell/functions.sh && fzf-git-checkout\""
 
 		# list current branch
 		brcrnt   = rev-parse --abbrev-ref HEAD
@@ -124,3 +124,10 @@
 
 [url "git@github.com:"]
 		insteadOf = https://github.com/
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[init]
+	defaultBranch = main

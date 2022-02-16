@@ -27,18 +27,12 @@
     "**/CVS": true
   },
   "git.path": "/usr/bin/git",
-  "gitlens.advanced.messages": {
-    "suppressShowKeyBindingsNotice": true
-  },
   "terminal.external.osxExec": "iTerm.app",
   "terminal.integrated.copyOnSelection": true,
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.fontSize": 12,
   "terminal.integrated.scrollback": 5000,
-  "terminal.integrated.shell.osx": "/bin/zsh",
   "diffEditor.ignoreTrimWhitespace": true,
-  "spotify.showPauseButton": true,
-  "spotify.showPlayButton": true,
   "editor.fontFamily": "Fira Code",
   "atomKeymap.promptV3Features": true,
   "workbench.editor.showTabs": true,
@@ -58,12 +52,6 @@
     "editor.defaultFormatter": "yzhang.markdown-all-in-one"
   },
   "search.searchOnTypeDebouncePeriod": 500,
-  "codesnap.transparentBackground": true,
-  "codesnap.realLineNumbers": true,
-  "codesnap.target": "window",
-  "codesnap.showWindowControls": false,
-  "codesnap.showLineNumbers": false,
-  "codesnap.containerPadding": "1em",
   "editor.fontLigatures": true,
   "eslint.format.enable": true,
   "workbench.colorTheme": "One Dark Pro",
@@ -75,10 +63,11 @@
   },
   "eslint.run": "onSave",
   "editor.renderWhitespace": "all",
-  "gitlens.mode.active": "zen",
   "[typescriptreact]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "window.zoomLevel": 1
+  "security.workspace.trust.untrustedFiles": "open",
+  "window.zoomLevel": 1,
+  "gitlens.mode.active": "zen"
 }

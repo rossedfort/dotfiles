@@ -26,7 +26,7 @@ export NVM_DIR="$HOME/.nvm"
 export FZF_BASE=/usr/local/bin/fzf
 export FZF_DEFAULT_OPTS="--no-height"
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
-export BAT_THEME="ansi-dark"
+export BAT_THEME="ansi"
 # Colorizes `man` output. Depends on `bat`
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export TERM_PROGRAM=iTerm.app

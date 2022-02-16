@@ -33,6 +33,6 @@ green "►" "Cloning $git_url into $target_dir"
 git clone $git_url $target_dir --quiet || exit 1
 
 green "►" "Done!"
-echo "$target_dir" | pbcopy
+echo "$target_dir" | tr -d '\n' | pbcopy
 green "✔︎" "Path to new repo copied to clipboard"
 exit 0
