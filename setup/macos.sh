@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 # Dark Mode
 defaults write -g AppleInterfaceStyle -string "Light"

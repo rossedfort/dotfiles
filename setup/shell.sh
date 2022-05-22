@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 if [[ "$SHELL" == "/bin/zsh" ]]; then
   echo "shell already set to zsh"

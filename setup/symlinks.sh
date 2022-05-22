@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 # back up some system files if they exist
 VSCODE_SETTINGS_PATH="$HOME/Library/Application Support/Code/User"

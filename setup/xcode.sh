@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 # Update xcode command line tools
 echo "Updating xcode command line tools"
