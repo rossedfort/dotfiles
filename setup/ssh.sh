@@ -38,13 +38,5 @@ echo "adding new ssh key to ssh-agent"
 eval "$(ssh-agent -s)"
 ssh-add -K "$HOME/.ssh/$ssh_key_filename" || exit 1
 pbcopy <"$HOME/.ssh/$ssh_key_filename.pub" || exit 1
-echo "Copied new public key to clipboard, plz add to GitHub: https://github.com/settings/keys"
-echo "Once you've added your key, press any key to continue"
-while [ true ]; do
-  read -t 3 -n 1
-  if [ $? = 0 ]; then
-    exit 0
-  else
-    echo "waiting for the keypress"
-  fi
-done
+echo "Copied new public key to clipboard, please add it to GitHub: https://github.com/settings/keys"
+read -n1 -s -r -p $'Press any key to continue...\n' key
