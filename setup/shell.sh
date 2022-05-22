@@ -8,10 +8,27 @@ else
   chsh -s $(which zsh)
 fi
 
-mv "$HOME/.zshrc" "$HOME/.zshrc.bak"
-mv "$HOME/.zshenv" "$HOME/.zshenv.bak"
+GIT_HOME="$HOME/code/github"
+DOTFILES_PATH="$GIT_HOME/rossedfort/dotfiles"
 
-echo "source \$DOTFILES_PATH/shell/.zshrc" >>"$HOME/.zshrc"
-echo "source \$DOTFILES_PATH/shell/.zshenv" >>"$HOME/.zshenv"
+ZSHRC_PATH="$HOME/.zshrc"
+ZSHENV_PATH="$HOME/.zshenv"
 
+ZSHRC_CONTENTS="source $DOTFILES_PATH/shell/.zshrc"
+ZSHENV_CONTENTS="export GIT_HOME=$GIT_HOME
+export DOTFILES_PATH=$DOTFILES_PATH
+source $DOTFILES_PATH/shell/.zshenv"
+
+mv $ZSHRC_PATH "$HOME/.zshrc.bak"
+mv $ZSHENV_PATH "$HOME/.zshenv.bak"
+
+echo "Adding\n\n$ZSHRC_CONTENTS \n\nto $ZSHRC_PATH"
+echo $ZSHRC_CONTENTS >> $ZSHRC_PATH
+
+echo ""
+echo "Adding\n\n$ZSHENV_CONTENTS \n\nto $ZSHENV_PATH"
+echo $ZSHENV_CONTENTS >> $ZSHENV_PATH
+
+echo ""
+echo "Launching new shell session"
 exec $SHELL -l
