@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # Dark Mode
-defaults write -g AppleInterfaceStyle -string "Dark"
+defaults write -g AppleInterfaceStyle -string "Light"
 
 # Set Sidebar Icon Size to "Medium"
 defaults write -g NSTableViewDefaultSizeMode -int 2

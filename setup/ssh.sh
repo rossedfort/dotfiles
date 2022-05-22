@@ -18,7 +18,10 @@ ssh-keygen \
   -N ""
 
 echo "Generated new key: $HOME/.ssh/$ssh_key_filename"
-pbcopy <"~/.ssh/$ssh_key_filename.pub"
+echo "---------------------------------------"
+cat "~/.ssh/$ssh_key_filename.pub"
+echo "---------------------------------------"
+pbcopy < "~/.ssh/$ssh_key_filename.pub"
 echo "Copied new public key to clipboard, plz add to GitHub"
 echo "https://github.com/settings/keys"
 echo "Don't forget to add your new key to the ssh-agent"
