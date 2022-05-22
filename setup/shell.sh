@@ -8,7 +8,7 @@ else
   chsh -s $(which zsh)
 fi
 
-GIT_HOME="$HOME/code/github"
+GIT_HOME="$HOME/dev/github.com"
 DOTFILES_PATH="$GIT_HOME/rossedfort/dotfiles"
 
 ZSHRC_PATH="$HOME/.zshrc"
