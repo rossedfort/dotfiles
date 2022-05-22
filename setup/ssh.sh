@@ -3,12 +3,8 @@
 password=""
 
 function getPw() {
-  echo -n 'Password: '
-  read -s password
-  echo
-  echo -n 'Confirm Password: '
-  read -s password_conf
-  echo
+  read -p 'Password: ' -s password
+  read -p 'Confirm Password: ' -s password_conf
   if [[ $password == $password_conf ]]; then
     return
   else
@@ -19,8 +15,8 @@ function getPw() {
 
 # Set up new ssh key
 echo "Please provide information for a new ssh key"
-vared -p 'Email: ' -c ssh_key_email
-vared -p 'Filename: ' -c ssh_key_filename
+read -p 'Email: ' ssh_key_email
+read -p 'Filename: ' ssh_key_filename
 getPw
 
 ssh-keygen \
