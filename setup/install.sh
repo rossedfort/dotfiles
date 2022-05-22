@@ -1,6 +1,7 @@
 #!/bin/zsh
 
-./shell.sh
+GIT_HOME="$HOME/dev/github.com"
+DOTFILES_PATH="$GIT_HOME/rossedfort/dotfiles"
 
 echo "Making git home directory: $GIT_HOME"
 mkdir -p $GIT_HOME
@@ -16,12 +17,13 @@ echo "enaming dotfiles-zsh"
 mv dotfiles-zsh dotfiles
 echo "removing zsh.zip"
 rm zsh.zip
-echo "changing into setup directory"
-cd dotfiles/setup
+echo "changing into dotfiles setup directory"
+cd $DOTFILES_PATH/setup
 echo "pwd: $(pwd)"
 echo "Running setup scripts"
+
+./shell.sh $GIT_HOME $DOTFILES_PATH
 ./brew.sh
 ./macos.sh
 ./symlinks.sh
 ./ssh.sh
-./xcode.sh

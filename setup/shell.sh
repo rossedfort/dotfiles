@@ -8,8 +8,8 @@ else
   chsh -s $(which zsh)
 fi
 
-GIT_HOME="$HOME/dev/github.com"
-DOTFILES_PATH="$GIT_HOME/rossedfort/dotfiles"
+GIT_HOME="$1"
+DOTFILES_PATH="$2"
 
 ZSHRC_PATH="$HOME/.zshrc"
 ZSHENV_PATH="$HOME/.zshenv"

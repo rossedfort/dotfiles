@@ -5,11 +5,6 @@ echo "Please provide information for a new ssh key"
 vared -p 'Email: ' -c ssh_key_email
 vared -p 'Filename: ' -c ssh_key_filename
 
-if [[ -z "$ssh_key_email" || -z "$ssh_key_filename" ]]; then
-  echo "Please enter your new ssh key email and filename when prompted."
-  exit 1
-fi
-
 ssh-keygen \
   -t ed25519 \
   -b 4096 \
