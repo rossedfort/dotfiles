@@ -3,20 +3,20 @@
 GIT_HOME="$HOME/dev/github.com"
 DOTFILES_PATH="$GIT_HOME/rossedfort/dotfiles"
 
-echo "Making git home directory: $GIT_HOME"
-mkdir -p $GIT_HOME
-cd $GIT_HOME
+echo "Making dotfiles directory: $DOTFILES_PATH"
+mkdir -p $DOTFILES_PATH
+cd $DOTFILES_PATH
 
 echo "pwd: $(pwd)"
 echo "Downloading dotfiles repository"
-curl -sLO "https://github.com/rossedfort/dotfiles/archive/refs/heads/zsh.zip"
+curl -sL -o dotfiles.zip "https://github.com/rossedfort/dotfiles/archive/refs/heads/zsh.zip"
 
-echo "unzipping zsh.zip"
-unzip zsh.zip
-echo "enaming dotfiles-zsh"
-mv dotfiles-zsh dotfiles
-echo "removing zsh.zip"
-rm zsh.zip
+unzip dotfiles.zip
+mv dotfiles-zsh/* .
+mv dotfiles-zsh/.* .
+rm dotfiles.zip
+rmdir dotfiles-zsh
+
 echo "changing into dotfiles setup directory"
 cd $DOTFILES_PATH/setup
 echo "pwd: $(pwd)"
