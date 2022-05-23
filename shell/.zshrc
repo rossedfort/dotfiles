@@ -12,7 +12,7 @@ zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 
-source $ZSH/oh-my-zsh.sh
+source "$ZSH/oh-my-zsh.sh"
 source "$DOTFILES_PATH/shell/aliases.sh"
 source "$DOTFILES_PATH/shell/functions.sh"
 
