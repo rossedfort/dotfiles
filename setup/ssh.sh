@@ -4,7 +4,9 @@ password=""
 
 function getPw() {
   read -p 'Password: ' -s password
+  echo
   read -p 'Confirm Password: ' -s password_conf
+  echo
   if [[ $password == $password_conf ]]; then
     return
   else
@@ -30,6 +32,11 @@ echo "Generated new key: $HOME/.ssh/$ssh_key_filename"
 echo "---------------------------------------"
 cat "$HOME/.ssh/$ssh_key_filename.pub" || exit 1
 echo "---------------------------------------"
+echo "adding to $HOME/.ssh/config"
+echo "Host *
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/$ssh_key_filename" >> "$HOME/.ssh/config"
 echo "adding new ssh key to ssh-agent"
 eval "$(ssh-agent -s)"
 ssh-add -K "$HOME/.ssh/$ssh_key_filename" || exit 1
