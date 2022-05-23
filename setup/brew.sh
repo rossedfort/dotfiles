@@ -2,7 +2,7 @@
 
 # install Homebrew
 echo "Installing Homebrew"
-${SHELL} -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 echo "Checking install"
 brew doctor
