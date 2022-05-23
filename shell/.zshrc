@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 if [ -z ${DOTFILES_PATH+x} ]; then
-	echo "\$DOTFILES_PATH is unset"
+  echo "\$DOTFILES_PATH is unset"
   echo "Set a value for \$DOTFILES_PATH and try again"
   exit 1
 fi
