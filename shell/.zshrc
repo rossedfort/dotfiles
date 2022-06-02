@@ -12,12 +12,11 @@ zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 
-source "$ZSH/oh-my-zsh.sh"
+plugins=(z fzf)
+
+source "$DOTFILES_PATH/oh-my-zsh/oh-my-zsh.sh"
 source "$DOTFILES_PATH/shell/aliases.sh"
 source "$DOTFILES_PATH/shell/functions.sh"
-
-source /usr/local/etc/profile.d/z.sh
-source ~/.fzf.zsh
 
 # Uncomment and run `zprof` to profile zsh shell performance
 # zmodload zsh/zprof

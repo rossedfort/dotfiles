@@ -15,7 +15,7 @@ ZSHRC_PATH="$HOME/.zshrc"
 ZSHENV_PATH="$HOME/.zshenv"
 
 ZSHRC_CONTENTS="source $DOTFILES_PATH/shell/.zshrc"
-ZSHENV_CONTENTS="export GIT_HOME=\"$GIT_HOME\"\nexport DOTFILES_PATH=\"$DOTFILES_PATH\"\nsource $DOTFILES_PATH/shell/.zshenv"
+ZSHENV_CONTENTS="export GIT_HOME=\"$GIT_HOME\"\nexport DOTFILES_PATH=\"$DOTFILES_PATH\"\nexport ZSH=\"$DOTFILES_PATH\"\nsource $DOTFILES_PATH/shell/.zshenv"
 
 mv $ZSHRC_PATH "$HOME/.zshrc.bak"
 mv $ZSHENV_PATH "$HOME/.zshenv.bak"

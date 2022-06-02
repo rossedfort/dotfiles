@@ -24,7 +24,8 @@
     "**/.git": false,
     "**/.hg": true,
     "**/.svn": true,
-    "**/CVS": true
+    "**/CVS": true,
+    "**/node_modules": true
   },
   "git.path": "/usr/bin/git",
   "terminal.external.osxExec": "iTerm.app",
@@ -54,7 +55,6 @@
   "search.searchOnTypeDebouncePeriod": 500,
   "editor.fontLigatures": true,
   "eslint.format.enable": true,
-  "workbench.colorTheme": "One Dark Pro",
   "editor.renderControlCharacters": false,
   "workbench.editor.enablePreview": false,
   "githubPullRequests.focusedMode": true,
@@ -69,5 +69,7 @@
   "typescript.updateImportsOnFileMove.enabled": "always",
   "security.workspace.trust.untrustedFiles": "open",
   "window.zoomLevel": 1,
+  "workbench.colorTheme": "One Dark Pro Darker",
+  "svelte.enable-ts-plugin": true,
   "gitlens.mode.active": "zen"
 }
