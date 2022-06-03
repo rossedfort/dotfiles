@@ -15,5 +15,4 @@ $dotfiles_path/setup/shell.sh $workspace_path $dotfiles_path || exit 1
 
 echo "Done setting up shell, please run the setup script now"
 echo "$DOTFILES_PATH/setup/setup.sh"
-exit 0
-
+exec ${SHELL} -l

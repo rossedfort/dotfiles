@@ -26,7 +26,3 @@ echo $ZSHRC_CONTENTS >> $ZSHRC_PATH
 echo ""
 echo "Adding\n\n$ZSHENV_CONTENTS \n\nto $ZSHENV_PATH"
 echo $ZSHENV_CONTENTS >> $ZSHENV_PATH
-
-echo ""
-echo "Launching new shell env"
-exec ${SHELL} -l
