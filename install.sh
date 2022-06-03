@@ -10,11 +10,12 @@ read -p 'Dotfiles directory: ' dotfiles_path
 echo "Cloning dotfiles repository"
 git clone --recurse-submodules git@github.com:rossedfort/dotfiles.git $dotfiles_path || exit 1
 
-$dotfiles_path/setup/shell.sh $workspace_path $dotfiles_path || exit 1
 echo "Running setup scripts"
-$dotfiles_path/setup/xcode.sh || exit 1
-$dotfiles_path/setup/brew.sh || exit 1
-$dotfiles_path/setup/macos.sh || exit 1
-$dotfiles_path/setup/symlinks.sh || exit 1
+$dotfiles_path/setup/shell.sh $workspace_path $dotfiles_path || exit 1
+$DOTFILES_PATH/setup/xcode.sh || exit 1
+$DOTFILES_PATH/setup/brew.sh || exit 1
+$DOTFILES_PATH/setup/macos.sh || exit 1
+$DOTFILES_PATH/setup/symlinks.sh || exit 1
+$DOTFILES_PATH/setup/rosetta.sh || exit 1
 echo "Done"
 exit 0
