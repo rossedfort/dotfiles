@@ -28,6 +28,5 @@ echo "Adding\n\n$ZSHENV_CONTENTS \n\nto $ZSHENV_PATH"
 echo $ZSHENV_CONTENTS >> $ZSHENV_PATH
 
 echo ""
-echo "Sourcing new shell env"
-source "$HOME/.zshenv"
-source "$HOME/.zshrc"
+echo "Launching new shell env"
+exec ${SHELL} -l
