@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # install Homebrew
 echo "Installing Homebrew"

@@ -1,25 +1,45 @@
-#!/bin/zsh
+#!/bin/sh
+
+password=""
+
+function getPw() {
+  read -p 'Password: ' -s password
+  echo
+  read -p 'Confirm Password: ' -s password_conf
+  echo
+  if [[ $password == $password_conf ]]; then
+    return
+  else
+    echo "Passwords don't match, please try again"
+    getPw
+  fi
+}
 
 # Set up new ssh key
 echo "Please provide information for a new ssh key"
-vared -p 'Email: ' -c ssh_key_email
-vared -p 'Filename: ' -c ssh_key_filename
-
-if [[ -z "$ssh_key_email" || -z "$ssh_key_filename" ]]; then
-  echo "Please enter your new ssh key email and filename when prompted."
-  exit 1
-fi
+read -p 'Email: ' ssh_key_email
+read -p 'Filename: ' ssh_key_filename
+getPw
 
 ssh-keygen \
   -t ed25519 \
   -b 4096 \
   -C "$ssh_key_email" \
   -f "$HOME/.ssh/$ssh_key_filename" \
-  -N ""
+  -N "$password"
 
 echo "Generated new key: $HOME/.ssh/$ssh_key_filename"
-pbcopy <"~/.ssh/$ssh_key_filename.pub"
-echo "Copied new public key to clipboard, plz add to GitHub"
-echo "https://github.com/settings/keys"
-echo "Don't forget to add your new key to the ssh-agent"
-echo "https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#adding-your-ssh-key-to-the-ssh-agent"
+echo "---------------------------------------"
+cat "$HOME/.ssh/$ssh_key_filename.pub" || exit 1
+echo "---------------------------------------"
+echo "adding to $HOME/.ssh/config"
+echo "Host *
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/$ssh_key_filename" >> "$HOME/.ssh/config"
+echo "adding new ssh key to ssh-agent"
+eval "$(ssh-agent -s)"
+ssh-add -K "$HOME/.ssh/$ssh_key_filename" || exit 1
+pbcopy <"$HOME/.ssh/$ssh_key_filename.pub" || exit 1
+echo "Copied new public key to clipboard, please add it to GitHub: https://github.com/settings/keys"
+read -n1 -s -r -p $'Press any key to continue...\n' key
