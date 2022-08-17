@@ -24,8 +24,7 @@
     "**/.git": false,
     "**/.hg": true,
     "**/.svn": true,
-    "**/CVS": true,
-    "**/node_modules": true
+    "**/CVS": true
   },
   "git.path": "/usr/bin/git",
   "terminal.external.osxExec": "iTerm.app",
@@ -62,14 +61,16 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "eslint.run": "onSave",
-  "editor.renderWhitespace": "all",
   "[typescriptreact]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
   "typescript.updateImportsOnFileMove.enabled": "always",
   "security.workspace.trust.untrustedFiles": "open",
-  "window.zoomLevel": 1,
-  "workbench.colorTheme": "One Dark Pro Darker",
+  "workbench.colorTheme": "Ayu Mirage Bordered",
   "svelte.enable-ts-plugin": true,
-  "gitlens.mode.active": "zen"
+  "editor.renderWhitespace": "boundary",
+  "git.confirmSync": false,
+  "window.zoomLevel": 1,
+  "gitlens.mode.active": "zen",
+  "editor.formatOnSave": true
 }

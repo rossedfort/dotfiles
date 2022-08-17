@@ -1,6 +1,6 @@
 #!/bin/zsh
 export ZSH=$DOTFILES_PATH/oh-my-zsh
-export ZSH_THEME="redfort"
+export ZSH_THEME="agnoster"
 # Make vim the default editor.
 export EDITOR='vim'
 # Enable persistent REPL history for `node`.

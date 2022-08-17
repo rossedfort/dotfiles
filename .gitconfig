@@ -116,6 +116,7 @@
 
 		# List contributors with number of commits
 		contributors = shortlog --summary --numbered
+		r = log --pretty='%cd - %h - %s' --graph --date=short
 [difftool "sourcetree"]
 		cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 
