@@ -16,7 +16,7 @@ source $ZSH/oh-my-zsh.sh
 source "$DOTFILES_PATH/shell/aliases.sh"
 source "$DOTFILES_PATH/shell/functions.sh"
 
-source /usr/local/etc/profile.d/z.sh
+source $DOTFILES_PATH/z.sh
 source ~/.fzf.zsh
 
 # Uncomment and run `zprof` to profile zsh shell performance

@@ -23,7 +23,7 @@ export LESS_TERMCAP_md="${yellow}"
 # Node Version Manager dir
 export NVM_DIR="$HOME/.nvm"
 # FZF Config
-export FZF_BASE=/usr/local/bin/fzf
+export FZF_BASE=/usr/bin/fzf
 export FZF_DEFAULT_OPTS="--no-height"
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
 export BAT_THEME="ansi"
