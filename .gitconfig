@@ -63,6 +63,8 @@
 
 		l = log --pretty=oneline --abbrev-commit
 
+		ly = log --after=12/31/2022 --before=01/01/2024 --author=rossedfort@gmail.com
+
 		# View the current working tree status using the short format
 		s = status -s
 
@@ -125,10 +127,16 @@
 
 [url "git@github.com:"]
 		insteadOf = https://github.com/
+[init]
+    defaultBranch = main
+[push]
+    autoSetupRemote = true
+[url "git@github.com"]
+    insteadOf = https://github.com
+    pushInsteadOf = https://github.com
+    pushInsteadOf = git://github.com
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-[init]
-	defaultBranch = main

@@ -7,12 +7,16 @@ if [ -z ${DOTFILES_PATH+x} ]; then
 fi
 
 # Tell zsh completion to match case insensitively
-zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'
+# zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'
 
 # zle -N up-line-or-beginning-search
 # zle -N down-line-or-beginning-search
 
 plugins=(z fzf 1password)
+
+function precmd() {
+  echo -en "\e]1;${PWD##*/}\a"
+}
 
 source "$DOTFILES_PATH/oh-my-zsh/oh-my-zsh.sh"
 source "$DOTFILES_PATH/shell/aliases.sh"

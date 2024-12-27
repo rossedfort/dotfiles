@@ -16,8 +16,7 @@ export HISTFILESIZE="${HISTSIZE}"
 export HISTCONTROL='ignoreboth'
 # Prefer US English and use UTF-8.
 export LANG='en_US.UTF-8'
-# export LC_ALL='en_US.UTF-8';
-export LC_ALL='C'
+export LC_ALL='en_US.UTF-8'
 # Highlight section titles in manual pages.
 export LESS_TERMCAP_md="${yellow}"
 # Node Version Manager dir
@@ -26,11 +25,10 @@ export NVM_DIR="$HOME/.nvm"
 export FZF_BASE=/usr/bin/fzf
 export FZF_DEFAULT_OPTS="--no-height"
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
-export BAT_THEME="ansi"
-# Colorizes `man` output. Depends on `bat`
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export TERM_PROGRAM=iTerm.app
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$HOME/bin:$PATH
 export PATH=$DOTFILES_PATH/bin:$PATH
 export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
+export DISABLE_AUTO_TITLE="true"
